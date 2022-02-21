@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Landing page</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link href='https://fonts.googleapis.com/css?family=Oxygen:400,300,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <nav id="navbar">
+    <img src="/Matlab_Logo.png" alt="Logotype" ><header>Matlab Technical Documentation</header>
+    <a href="#conceptos_basicos" class="nav-link">Conceptos básicos</a>
+    <a href="#graficas_en_lineas" class="nav-link">Gráficas de líneas</a>
+    <a href="#graficas_tridimensionales" class="nav-link">Gráficas tridimensionales</a>
+    <a href="#if_elif_else" class="nav-link">If, elseif, else</a>
+    <a href="#while_loop" class="nav-link">While loop</a>
+  </nav>
+  <main id="main-doc">
+    <section class="main-section" id="conceptos_basicos">
+      <header>Conceptos básicos</header>
+      <article>
+        <p>El escritorio incluye los siguientes paneles:</p>
+        <ul>
+          <li>Current Folder: para acceder a los archivos.</li>
+          <li>Command Window: para introducir comandos en la línea de -comandos, identificada por el indicador (>>).</li>
+          <li>Workspace: para explorar datos que cree o importe de archivos.</li>
+        </ul>
+        <p>Al trabajar en MATLAB, usted emite comandos que crean variables y llaman a funciones. Por ejemplo, para crear una variable denominada a, debe introducir esta instrucción en la línea de comandos:</p>
+        <code>a = 1</code>
+        <p>MATLAB agrega la variable a al área de trabajo y muestra el resultado en la ventana de comandos.Cuando no se especifica una variable de salida, MATLAB utiliza la variable ans, abreviatura de answer (respuesta), para almacenar los resultados del cálculo.</p>
+        <code>sin(a)
+          ans =
+          
+              0.8415</code>
+      </article>        
+    </section>
+
+    <section class="main-section" id="graficas_en_lineas">
+      <header>Gráficas de líneas</header>
+      <article>
+        <p>Para crear gráficas de líneas bidimensionales, use la función plot. Por ejemplo, represente el valor de la función seno de 0 a 2π:</p>
+        <code>x = 0:pi/100:2*pi;
+          y = sin(x);
+          plot(x,y)
+        </code>
+        <img src="/plot_line.png" alt="graphic_line_picture">
+      </article>
+    </section>
+
+    <section class="main-section" id="graficas_tridimensionales">
+      <header>Gráficas tridimensionales</header>
+      <article>
+        <p>Comúnmente, las gráficas tridimensionales muestran una superficie definida por una función de dos variables, z = f(x,y). Para evaluar z, primero cree un conjunto de puntos (x,y) en el dominio de la función usando meshgrid.</p>
+        <code>[X,Y] = meshgrid(-2:.2:2);                                
+          Z = X .* exp(-X.^2 - Y.^2);
+        </code>
+        <p>Luego, cree una gráfica de superficie.</p>
+        <code>surf(X,Y,Z)</code>
+        <p>Las funciones surf y mesh muestran superficies en tres dimensiones. surf muestra las líneas de conexión y las caras de la superficie en color. mesh produce superficies de malla que colorean solo las líneas que conectan los puntos de definición.</p>
+        <img src="/plot_3d.png" alt="graphic_tridimensional">
+      </article>
+    </section>
+
+    <section class="main-section" id="if_elif_else">
+      <header>If, elseif, else</header>
+      <article>
+        <p>if expression, statements, end evalúa una expresión y ejecuta un grupo de instrucciones cuando la expresión es verdadera. Una expresión es verdadera cuando su resultado no está vacío y solo contiene elementos distintos a cero (lógicos o numéricos reales). En caso contrario, la expresión es falsa.</p>
+        <p>Los bloques elseif y else son opcionales. Las instrucciones se ejecutan solo si las expresiones anteriores del bloque if...end son falsas. Un bloque if puede incluir varios bloques elseif.</p>
+        <p>Determine si un valor está dentro de un rango especificado</p>
+        <code>x = 10;
+          minVal = 2;
+          maxVal = 6;
+          
+          if (x >= minVal) && (x <= maxVal)
+              disp('Value within specified range.')
+          elseif (x > maxVal)
+              disp('Value exceeds maximum value.')
+          else
+              disp('Value is below minimum value.')
+          end</code>
+        </article>
+    </section>
+
+    <section class="main-section" id="while_loop">
+      <header>While loop</header>
+      <article>
+        <p>Bucle while para repetir cuando la condición es verdadera</p>
+        <p>While expression, statements, end evalúa una expresión y repite la ejecución de un grupo de instrucciones en un bucle mientras la expresión es verdadera. Una expresión es verdadera cuando su resultado no está vacío y solo contiene elementos distintos a cero (lógicos o numéricos reales). En caso contrario, la expresión es falsa.
+        </p>
+        <ul>
+          <li>Salir del bucle antes de que la expresión sea falsa</li>
+          <li>Saltar a la siguiente iteración del bucle</li>
+          <li>Utilice un bucle while para calcular factorial(10).</li>
+        </ul>
+        <code>n = 10;
+          f = n;
+          while n > 1
+              n = n-1;
+              f = f*n;
+          end
+          disp(['n! = ' num2str(f)])
+          n! = 3628800
+        </code>
+      </article>
+    </section>
+
+  </main>
+
+
+<!-- jQuery (Bootstrap JS plugins depend on it) -->
+  <script src="js/jquery-2.1.4.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <!--<script src="js/ajax-utils.js"></script>
+  <script src="js/script.js"></script>-->
+  
+</body>
+</html>
